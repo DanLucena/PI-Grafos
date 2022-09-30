@@ -45,6 +45,9 @@ describe("#execute", () => {
     }
 
     const firstCompany = await createCompanyService.execute(company);
+    try {
+      const secondCompany = await createCompanyService.execute(company);
+    } catch (err) { }
 
     expect(companiesRepositoryInMemory.companies).toHaveLength(1);
   });

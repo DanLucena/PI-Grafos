@@ -1,4 +1,4 @@
-import { ICoordinates } from "shared/interfaces/ICoordinates";
+import { Coordinates } from "../../coordinates/entities/Coordinates";
 
 class Company {
   id?: string;
@@ -7,7 +7,7 @@ class Company {
   cellphone: string;
   mail: string;
   plan: string;
-  location: ICoordinates;
+  location: Coordinates;
 }
 
 export { Company }; 

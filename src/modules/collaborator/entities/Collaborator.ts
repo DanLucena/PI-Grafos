@@ -1,4 +1,4 @@
-import { ICoordinates } from "shared/interfaces/ICoordinates";
+import { Coordinates } from "../../coordinates/entities/Coordinates";
 
 class Collaborator {
   id?: string;
@@ -7,7 +7,6 @@ class Collaborator {
   cellphone: string;
   cpf: string;
   balance: number;
-  location: ICoordinates;
 }
 
 export { Collaborator };

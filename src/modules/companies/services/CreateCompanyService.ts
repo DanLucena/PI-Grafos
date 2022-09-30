@@ -6,7 +6,7 @@ class CreateCompanyService {
   constructor(private companyRepository: ICompanyRepository) { }
 
   async execute({ name, branch, cellphone, mail, plan, location }: Company): Promise<Company> {
-    this.checkCompanyAlreadyExists(mail);
+    await this.checkCompanyAlreadyExists(mail);
 
     const company = await this.companyRepository.create({ name, branch, cellphone, mail, plan, location });
 

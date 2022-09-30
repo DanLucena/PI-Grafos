@@ -17,9 +17,9 @@ describe("Company repository", () => {
       mail: 'testCompany@gmail.com',
       plan: 'Enterprise',
       location: {
+        id: "1",
         x: "12.01293Z",
-        y: "12.01293Z",
-        z: "12.01293Z"
+        y: "12.01293Z"
       }
     });
 
@@ -35,9 +35,9 @@ describe("Company repository", () => {
       mail: 'testCompany@gmail.com',
       plan: 'Enterprise',
       location: {
+        id: "1",
         x: "12.01293Z",
-        y: "12.01293Z",
-        z: "12.01293Z"
+        y: "12.01293Z"
       }
     });
 
@@ -55,9 +55,9 @@ describe("Company repository", () => {
       mail: 'testCompany@gmail.com',
       plan: 'Enterprise',
       location: {
+        id: "1",
         x: "12.01293Z",
-        y: "12.01293Z",
-        z: "12.01293Z"
+        y: "12.01293Z"
       }
     });
 
@@ -75,9 +75,9 @@ describe("Company repository", () => {
       mail: 'testCompany@gmail.com',
       plan: 'Enterprise',
       location: {
+        id: "1",
         x: "12.01293Z",
-        y: "12.01293Z",
-        z: "12.01293Z"
+        y: "12.01293Z"
       }
     });
 
