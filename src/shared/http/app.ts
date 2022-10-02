@@ -1,9 +1,11 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
-import { CustomError } from '../errors/CustomError';
-import { router } from './routes';
+import { CustomError } from "../errors/CustomError";
+import { router } from "./routes";
 
 const app = express();
+
+app.use(express.json());
 
 app.use(router);
 

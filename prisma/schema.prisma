@@ -11,12 +11,33 @@ datasource db {
 }
 
 model Company {
-  id        Int      @id @default(autoincrement())
-  name      String
-  branch    String
-  cellphone String?
-  mail      String   @unique
-  plan      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int            @id @default(autoincrement())
+  name         String
+  branch       String
+  cellphone    String?
+  mail         String         @unique
+  plan         String
+  collaborator Collaborator[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model Collaborator {
+  id          Int           @id @default(autoincrement())
+  coordinates Coordinates[]
+  name        String
+  email       String        @unique
+  cellphone   String
+  cpf         String
+  balance     Float
+  company     Company       @relation(fields: [companyId], references: [id])
+  companyId   Int
+}
+
+model Coordinates {
+  id             Int          @id @default(autoincrement())
+  x              String
+  y              String
+  collaborator   Collaborator @relation(fields: [collaboratorId], references: [id])
+  collaboratorId Int
 }

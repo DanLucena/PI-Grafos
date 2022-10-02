@@ -1,8 +1,9 @@
 class Coordinates {
-  id?: string;
-  collaboratorId?: string;
+  id?: number;
+  collaboratorId?: number;
   x: string;
   y: string;
+  adjacencyList: Coordinates[];
 }
 
 export { Coordinates };

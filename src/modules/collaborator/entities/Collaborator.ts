@@ -1,7 +1,6 @@
-import { Coordinates } from "../../coordinates/entities/Coordinates";
-
 class Collaborator {
-  id?: string;
+  id?: number;
+  companyId?: number;
   name: string;
   email: string;
   cellphone: string;

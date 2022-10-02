@@ -1,10 +1,10 @@
-import { CollaboratorRepositoryInMemory } from '../../../../modules/collaborator/repositories/in-memory/CollaboratorRepositoryInMemory';
-import { describe, expect, beforeEach, it } from 'vitest';
-import { Collaborator } from '../../../../modules/collaborator/entities/Collaborator';
+import { CollaboratorRepositoryInMemory } from "../../../../modules/collaborator/repositories/in-memory/CollaboratorRepositoryInMemory";
+import { describe, expect, beforeEach, it } from "vitest";
+import { Collaborator } from "../../../../modules/collaborator/entities/Collaborator";
 
 let collaboratorRepository: CollaboratorRepositoryInMemory;
 let collaboratorModel: Collaborator = {
-  id: "1",
+  id: 1,
   email: "teste@user.com",
   name: "test",
   cpf: "123.123.123-32",
@@ -32,14 +32,18 @@ describe("Collaborator repository", () => {
 
   it("find a collaborator by email", async () => {
     const collaborator = await collaboratorRepository.create(collaboratorModel);
-    const findUser = await collaboratorRepository.findByEmail(collaboratorModel.email);
+    const findUser = await collaboratorRepository.findByEmail(
+      collaboratorModel.email
+    );
 
-    expect(findUser).toHaveProperty("id")
+    expect(findUser).toHaveProperty("id");
   });
 
   it("find a collaborator by id", async () => {
     const collaborator = await collaboratorRepository.create(collaboratorModel);
-    const findUser = await collaboratorRepository.findById(collaboratorModel.id);
+    const findUser = await collaboratorRepository.findById(
+      collaboratorModel.id
+    );
 
     expect(findUser).toHaveProperty("id");
   });

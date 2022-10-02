@@ -1,13 +1,12 @@
 import { Coordinates } from "../../coordinates/entities/Coordinates";
 
 class Company {
-  id?: string;
+  id?: number;
   name: string;
   branch: string;
   cellphone: string;
   mail: string;
   plan: string;
-  location: Coordinates;
 }
 
-export { Company }; 
+export { Company };

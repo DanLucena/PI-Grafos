@@ -1,21 +1,54 @@
 import { Company } from "../entities/Company";
 import { ICompanyRepository } from "./interfaces/ICompanyRepository";
+import { prismaClient } from "../../../shared/clients/prismaClient";
 
 class CompanyRepository implements ICompanyRepository {
-  create(data: Company): Promise<Company> {
-    return;
+  async create({
+    name,
+    mail,
+    branch,
+    cellphone,
+    plan,
+  }: Company): Promise<Company> {
+    const company = await prismaClient.company.create({
+      data: {
+        name,
+        mail,
+        branch,
+        cellphone,
+        plan,
+      },
+    });
+
+    return company;
   }
 
-  destroy(id: string): Promise<void> {
-    return;
+  async destroy(id: number): Promise<void> {
+    await prismaClient.company.delete({
+      where: {
+        id,
+      },
+    });
   }
 
-  findByEmail(email: string): Promise<Company> {
-    return;
+  async findByEmail(email: string): Promise<Company> {
+    const company = await prismaClient.company.findUnique({
+      where: {
+        mail: email,
+      },
+    });
+
+    return company;
   }
 
-  findById(id: string): Promise<Company> {
-    return;
+  async findById(id: number): Promise<Company> {
+    const company = await prismaClient.company.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    return company;
   }
 }
 

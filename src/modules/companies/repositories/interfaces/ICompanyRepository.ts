@@ -1,9 +1,9 @@
-import { Company } from '../../entities/Company';
+import { Company } from "../../entities/Company";
 
 interface ICompanyRepository {
   create(data: Company): Promise<Company>;
-  destroy(id: string): Promise<void>;
-  findById(id: string): Promise<Company>;
+  destroy(id: number): Promise<void>;
+  findById(id: number): Promise<Company>;
   findByEmail(email: string): Promise<Company>;
 }
 

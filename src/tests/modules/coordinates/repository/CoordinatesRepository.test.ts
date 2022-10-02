@@ -1,13 +1,13 @@
-import { Collaborator } from '../../../../modules/collaborator/entities/Collaborator';
-import { CollaboratorRepositoryInMemory } from '../../../../modules/collaborator/repositories/in-memory/CollaboratorRepositoryInMemory';
-import { describe, expect, beforeEach, it } from 'vitest';
-import { CoordinatesRepositoryInMemory } from '../../../../modules/coordinates/repositories/in-memory/CoordinatesRepository';
+import { Collaborator } from "../../../../modules/collaborator/entities/Collaborator";
+import { CollaboratorRepositoryInMemory } from "../../../../modules/collaborator/repositories/in-memory/CollaboratorRepositoryInMemory";
+import { describe, expect, beforeEach, it } from "vitest";
+import { CoordinatesRepositoryInMemory } from "../../../../modules/coordinates/repositories/in-memory/CoordinatesRepository";
 
 let coordinatesRepository: CoordinatesRepositoryInMemory;
 let collaboratorRepository: CollaboratorRepositoryInMemory;
 
 let collaboratorModel: Collaborator = {
-  id: "1",
+  id: 1,
   email: "teste@user.com",
   name: "test",
   cpf: "123.123.123-32",
@@ -24,10 +24,11 @@ describe("Coordinates repository", () => {
   it("creates a new coordinate", async () => {
     const collaborator = await collaboratorRepository.create(collaboratorModel);
     const coordinate = await coordinatesRepository.create({
-      id: "1",
+      id: 1,
       collaboratorId: collaborator.id,
       x: "12.1231",
       y: "23.1234",
+      adjacencyList: [],
     });
 
     expect(coordinate).toHaveProperty("id");
@@ -36,10 +37,11 @@ describe("Coordinates repository", () => {
   it("delete a coordinate", async () => {
     const collaborator = await collaboratorRepository.create(collaboratorModel);
     const coordinate = await coordinatesRepository.create({
-      id: "1",
+      id: 1,
       collaboratorId: collaborator.id,
       x: "12.1231",
       y: "23.1234",
+      adjacencyList: [],
     });
 
     await coordinatesRepository.destroy(coordinate.id);
@@ -51,10 +53,11 @@ describe("Coordinates repository", () => {
     const collaborator = await collaboratorRepository.create(collaboratorModel);
     for (let i = 0; i < 5; i++) {
       await coordinatesRepository.create({
-        id: `${i}`,
+        id: i,
         collaboratorId: collaborator.id,
         x: "12.1231",
         y: "23.1234",
+        adjacencyList: [],
       });
     }
 
@@ -66,10 +69,11 @@ describe("Coordinates repository", () => {
   it("find coordinate by id", async () => {
     const collaborator = await collaboratorRepository.create(collaboratorModel);
     const coordinate = await coordinatesRepository.create({
-      id: "1",
+      id: 1,
       collaboratorId: collaborator.id,
       x: "12.1231",
       y: "23.1234",
+      adjacencyList: [],
     });
 
     const findCoordinate = await coordinatesRepository.findById(coordinate.id);
@@ -78,26 +82,30 @@ describe("Coordinates repository", () => {
   });
 
   it("update coordinate data", async () => {
-    const newX = '54.1232';
-    const newY = '94.1232';
+    const newX = "54.1232";
+    const newY = "94.1232";
 
     const collaborator = await collaboratorRepository.create(collaboratorModel);
     const coordinate = await coordinatesRepository.create({
-      id: "1",
+      id: 1,
       collaboratorId: collaborator.id,
       x: "12.1231",
       y: "23.1234",
+      adjacencyList: [],
     });
 
     const expectedCoordinate = {
-      id: "1",
+      id: 1,
       collaboratorId: collaborator.id,
       x: newX,
       y: newY,
-    }
+    };
 
-
-    const updatedCoordinate = await coordinatesRepository.update(coordinate, newX, newY);
+    const updatedCoordinate = await coordinatesRepository.update(
+      coordinate,
+      newX,
+      newY
+    );
 
     expect(updatedCoordinate).toMatchObject(expectedCoordinate);
   });

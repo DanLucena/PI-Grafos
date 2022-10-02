@@ -3,12 +3,26 @@ import { Collaborator } from "../entities/Collaborator";
 import { ICollaboratorRepository } from "../repositories/interfaces/ICollaboratorRepository";
 
 class CreateCollaboratorService {
-  constructor(private collaboratorRepository: ICollaboratorRepository) { }
+  constructor(private collaboratorRepository: ICollaboratorRepository) {}
 
-  async perform({ name, email, cpf, cellphone, balance }: Collaborator): Promise<Collaborator> {
+  async execute({
+    name,
+    email,
+    cpf,
+    cellphone,
+    balance,
+    companyId,
+  }: Collaborator): Promise<Collaborator> {
     await this.checkCompanyAlreadyExists(email);
 
-    const collaborator = await this.collaboratorRepository.create({ name, email, cpf, cellphone, balance });
+    const collaborator = await this.collaboratorRepository.create({
+      name,
+      email,
+      cpf,
+      cellphone,
+      balance,
+      companyId,
+    });
 
     return collaborator;
   }
@@ -17,7 +31,7 @@ class CreateCollaboratorService {
     const collaborator = await this.collaboratorRepository.findByEmail(email);
 
     if (collaborator) {
-      throw new CustomError("User already exists", 400);
+      throw new CustomError("Collaborator already exists", 400);
     }
   }
 }
