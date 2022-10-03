@@ -11,7 +11,6 @@ class CreateCompanyService {
     cellphone,
     mail,
     plan,
-    companyId,
   }: Company): Promise<Company> {
     await this.checkCompanyAlreadyExists(mail);
 
