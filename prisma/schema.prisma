@@ -16,7 +16,9 @@ model Company {
   branch       String
   cellphone    String?
   mail         String         @unique
+  password     String
   plan         String
+  token        String
   collaborator Collaborator[]
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt

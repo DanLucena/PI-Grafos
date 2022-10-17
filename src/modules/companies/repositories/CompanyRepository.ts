@@ -8,6 +8,8 @@ class CompanyRepository implements ICompanyRepository {
     mail,
     branch,
     cellphone,
+    password,
+    token = "",
     plan,
   }: Company): Promise<Company> {
     const company = await prismaClient.company.create({
@@ -16,6 +18,8 @@ class CompanyRepository implements ICompanyRepository {
         mail,
         branch,
         cellphone,
+        password,
+        token,
         plan,
       },
     });
@@ -49,6 +53,19 @@ class CompanyRepository implements ICompanyRepository {
     });
 
     return company;
+  }
+
+  async updateToken(company: Company, token: string): Promise<string> {
+    await prismaClient.company.update({
+      where: {
+        id: company.id,
+      },
+      data: {
+        token,
+      },
+    });
+
+    return token;
   }
 }
 

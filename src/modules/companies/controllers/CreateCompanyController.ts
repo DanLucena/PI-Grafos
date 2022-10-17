@@ -7,13 +7,14 @@ class CreateCompanyController {
     const companyRepository = new CompanyRepository();
     const createCompanyService = new CreateCompanyService(companyRepository);
 
-    const { name, mail, branch, cellphone, plan } = request.body;
+    const { name, mail, branch, cellphone, password, plan } = request.body;
 
     const company = await createCompanyService.execute({
       name,
       mail,
       branch,
       cellphone,
+      password,
       plan,
     });
 

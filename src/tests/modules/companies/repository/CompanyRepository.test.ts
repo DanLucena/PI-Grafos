@@ -15,6 +15,7 @@ describe("Company repository", () => {
       branch: "Technology",
       cellphone: "556199999999",
       mail: "testCompany@gmail.com",
+      password: "123321",
       plan: "Enterprise",
     });
 
@@ -28,6 +29,7 @@ describe("Company repository", () => {
       branch: "Technology",
       cellphone: "556199999999",
       mail: "testCompany@gmail.com",
+      password: "123321",
       plan: "Enterprise",
     });
 
@@ -43,6 +45,7 @@ describe("Company repository", () => {
       branch: "Technology",
       cellphone: "556199999999",
       mail: "testCompany@gmail.com",
+      password: "123321",
       plan: "Enterprise",
     });
 
@@ -60,6 +63,7 @@ describe("Company repository", () => {
       branch: "Technology",
       cellphone: "556199999999",
       mail: "testCompany@gmail.com",
+      password: "123321",
       plan: "Enterprise",
     });
 

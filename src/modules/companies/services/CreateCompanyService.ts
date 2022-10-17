@@ -1,6 +1,7 @@
 import { CustomError } from "../../../shared/errors/CustomError";
 import { Company } from "../entities/Company";
 import { ICompanyRepository } from "../repositories/interfaces/ICompanyRepository";
+import { hash } from "bcrypt";
 
 class CreateCompanyService {
   constructor(private companyRepository: ICompanyRepository) {}
@@ -10,15 +11,18 @@ class CreateCompanyService {
     branch,
     cellphone,
     mail,
+    password,
     plan,
   }: Company): Promise<Company> {
     await this.checkCompanyAlreadyExists(mail);
+    const digestedPassword = await hash(password, 8);
 
     const company = await this.companyRepository.create({
       name,
       branch,
       cellphone,
       mail,
+      password: digestedPassword,
       plan,
     });
 
