@@ -51,6 +51,14 @@ class CollaboratorRepository implements ICollaboratorRepository {
 
     return collaborator;
   }
+
+  async findAll(companyId: number): Promise<Collaborator[]> {
+    return await prismaClient.collaborator.findMany({
+      where: {
+        companyId,
+      },
+    });
+  }
 }
 
 export { CollaboratorRepository };

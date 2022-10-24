@@ -67,6 +67,14 @@ class CompanyRepository implements ICompanyRepository {
 
     return token;
   }
+
+  async findByToken(token: string): Promise<Company> {
+    return await prismaClient.company.findFirst({
+      where: {
+        token,
+      },
+    });
+  }
 }
 
 export { CompanyRepository };

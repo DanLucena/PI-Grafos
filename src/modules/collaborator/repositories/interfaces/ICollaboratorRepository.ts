@@ -5,6 +5,7 @@ interface ICollaboratorRepository {
   destroy(id: number): Promise<void>;
   findById(id: number): Promise<Collaborator>;
   findByEmail(email: string): Promise<Collaborator>;
+  findAll(companyId: number): Promise<Collaborator[]>;
 }
 
 export { ICollaboratorRepository };
