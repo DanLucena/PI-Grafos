@@ -43,3 +43,10 @@ model Coordinates {
   collaborator   Collaborator @relation(fields: [collaboratorId], references: [id])
   collaboratorId Int
 }
+
+model CoordinatesRelations {
+  id                  Int   @id @default(autoincrement())
+  baseCoordinateId    Int
+  destinyCoordinateId Int
+  distance            Float
+}

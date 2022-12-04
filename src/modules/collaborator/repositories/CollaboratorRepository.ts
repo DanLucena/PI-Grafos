@@ -59,6 +59,17 @@ class CollaboratorRepository implements ICollaboratorRepository {
       },
     });
   }
+
+  async updateBalance(data: Collaborator, newBalance: number): Promise<void> {
+    await prismaClient.collaborator.update({
+      where: {
+        id: data.id
+      },
+      data: {
+        balance: newBalance
+      }
+    })
+  }
 }
 
 export { CollaboratorRepository };

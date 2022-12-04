@@ -9,11 +9,14 @@ class FindAllCoordinatesService {
     private collaboratorRepository: ICollaboratorRepository
   ) {}
 
-  async execute(id: number): Promise<Coordinates[]> {
+  async execute(id: number): Promise<any[]> {
     const collaborator = await this.findCollaborator(id);
     const coordinates = await this.coordinatesRepository.findAll(collaborator);
+    const finalData = coordinates.map((coordinate) => {
+      return { id: coordinate.id, lat: coordinate.x, lng: coordinate.y };
+    });
 
-    return coordinates;
+    return finalData;
   }
 
   private async findCollaborator(id: number) {

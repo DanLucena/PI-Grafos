@@ -4,17 +4,11 @@ import { ICoordinatesRepository } from "../repositories/interfaces/ICoordinatesR
 class CreateCoordinateService {
   constructor(private coordinatesRepository: ICoordinatesRepository) {}
 
-  async perform({
-    collaboratorId,
-    x,
-    y,
-    adjacencyList,
-  }: Coordinates): Promise<Coordinates> {
+  async perform({ collaboratorId, x, y }: Coordinates): Promise<Coordinates> {
     const coordinate = this.coordinatesRepository.create({
       collaboratorId,
       x,
       y,
-      adjacencyList,
     });
 
     return coordinate;

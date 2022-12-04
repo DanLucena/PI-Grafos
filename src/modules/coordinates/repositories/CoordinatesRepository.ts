@@ -4,12 +4,7 @@ import { prismaClient } from "../../../shared/clients/prismaClient";
 import { ICoordinatesRepository } from "./interfaces/ICoordinatesRepository";
 
 class CoordinatesRepository implements ICoordinatesRepository {
-  async create({
-    x,
-    y,
-    collaboratorId,
-    adjacencyList,
-  }: Coordinates): Promise<Coordinates> {
+  async create({ x, y, collaboratorId }: Coordinates): Promise<Coordinates> {
     const coordinate = await prismaClient.coordinates.create({
       data: {
         x,
